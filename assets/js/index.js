@@ -5,19 +5,13 @@ $(function () {
   $("#btnLogOut").on("click", function (e) {
     e.preventDefault();
 
-    layer.open({
-      icon: 3,
-      title: "提示",
-      content: "确认退出登录?",
-      btn: ["确定", "取消"],
-      yes: function () {
-        localStorage.removeItem("token");
-        location.href = "../../login.html";
-      },
-      cancel: function () {
-        //右上角关闭回调
-        return false; //开启该代码可禁止点击该按钮关闭
-      },
+    layer.confirm("确认退出登录?", { icon: 3, title: "提示" }, function (
+      index
+    ) {
+      //do something
+      localStorage.removeItem("token");
+      location.href = "../../login.html";
+      layer.close(index);
     });
   });
 
